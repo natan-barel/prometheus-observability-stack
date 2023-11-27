@@ -1,3 +1,6 @@
+# Prometheus Stack Architecture & Workflow
+
+Here is the high level overview of our setup architecture and workflow.
 
 ![284796035-6a9f9d90-e56f-4038-82c7-e8eae29d8bcf](https://github.com/natan-barel/prometheus-observability-stack/assets/132342500/9fae0409-a666-4d0e-953e-db17fabf909d)
 
