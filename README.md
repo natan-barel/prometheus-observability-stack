@@ -28,17 +28,13 @@ Here is the high level overview of our setup architecture and workflow.
 ## Prerequisites
 To deploy the Prometheus stack on Docker, we have the following prerequisites:
 
-+ Create an [aws account](https://aws.amazon.com/) with the IAM `AdministratorAccess` permission with a key pair.
++ Create an [aws account](https://aws.amazon.com/) with the IAM `AdministratorAccess` permission.
 
 + AWS CLI configured with the account.
 
++ Create a key pair. 
+
 + Install and configure [terraform](https://www.terraform.io/downloads)
-
-
-
-
-
-
 
 ## Provision Server Using Terraform
 
@@ -113,6 +109,10 @@ Now we can connect to the AWS EC2 machine just created using the public IP. Repl
 We will check the cloud-init logs to see if the user data script has run successfully.
 
     tail /var/log/cloud-init-output.log
+    
+An example output is shown below. It should show Docker and Docker compose versions as highlighted in the image.
+
+![image-42](https://github.com/natan-barel/prometheus-observability-stack/assets/132342500/755ff886-f202-4ea8-a873-499c31d5adc4)
 
 Let’s verify the docker and docker-compose versions again.
 
@@ -136,14 +136,20 @@ Execute the following **make command** to update server IP in prometheus config 
 ```bash
 make all
 ```
+You should see an output as shown below.
+
+![image-86](https://github.com/natan-barel/prometheus-observability-stack/assets/132342500/e8bb7b1c-45c6-45e5-8b89-98c8004e2be3)
 
 Bring up the stack using Docker Compose. It will deploy Prometheus, Alert manager, Node exporter and Grafana
 
 ```bash
 sudo docker-compose up -d
 ```
-Now, with your servers IP address you can access all the apps on different ports.
+On a successful execution, you should see the following output saying `Running 5/5`
 
+![image-109](https://github.com/natan-barel/prometheus-observability-stack/assets/132342500/879ca6bc-eba7-4688-a440-e4712b0e65e4)
+
+Now, with your servers IP address you can access all the apps on different ports.
 
 + **Prometheus**: http://your-ip-address:9090
 + **Alert Manager**: http://your-ip-address:9093
